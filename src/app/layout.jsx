@@ -5,6 +5,9 @@ import "./globals.css";
 
 export const metadata = {
   title: "Code++",
+  icons: {
+    icon: "/cpp-favicon-96.png",
+  },
   description: "Practice coding problems with real-time execution",
 };
 

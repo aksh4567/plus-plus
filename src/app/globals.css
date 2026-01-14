@@ -64,6 +64,11 @@ body {
   transition: background-color 0.2s ease, color 0.2s ease;
 }
 
+/* Ensure the landing gradient fills the viewport, including the scrollbar gutter */
+body:has(.home-landing) {
+  background: linear-gradient(135deg, #fde68a 0%, #f5d0fe 50%, #e9d5ff 100%);
+}
+
 /* 
    MANUAL UTILITY CLASSES (The Fix)
    This forces the classes to exist and map to your variables.
