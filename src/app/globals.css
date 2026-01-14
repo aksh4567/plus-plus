@@ -1,26 +1,192 @@
 @import "tailwindcss";
 
+/* 
+   THEME VARIABLES
+*/
 :root {
+  /* Default: Light Mode */
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #262626;
+
+  --color-bg-primary: #ffffff;
+  --color-bg-secondary: #f7f9fa;
+  --color-bg-tertiary: #f2f3f4;
+
+  --color-border: #eeeeee;
+  --color-text-primary: #262626;
+  --color-text-secondary: #3c3c4399;
+
+  --color-accent: #ffa116;
+  --color-accent-hover: #ffb84d;
+
+  --color-success: #00af9b;
+  --color-warning: #febd00;
+  --color-error: #ff2d55;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+.dark {
+  /* Dark Mode */
+  --background: #1a1a1a;
+  --foreground: #eff1f6bf;
+
+  --color-bg-primary: #1a1a1a;
+  --color-bg-secondary: #282828;
+  --color-bg-tertiary: #3e3e3e;
+
+  --color-border: #3e3e3e;
+  --color-text-primary: #eff1f6bf;
+  --color-text-secondary: #808080;
+
+  --color-accent: #ffa116;
+  --color-accent-hover: #ffb84d;
+
+  --color-success: #00b8a3;
+  --color-warning: #ffc01e;
+  --color-error: #ff375f;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* Base Styles */
+* {
+  box-sizing: border-box;
 }
-
+html {
+  scroll-behavior: smooth;
+  background-color: var(--background);
+}
 body {
+  margin: 0;
+  padding: 0;
+  font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+/* 
+   MANUAL UTILITY CLASSES (The Fix)
+   This forces the classes to exist and map to your variables.
+*/
+
+/* 1. NEW PHASE 3 NAMING */
+.bg-code-bg-primary {
+  background-color: var(--color-bg-primary);
+}
+.bg-code-bg-secondary {
+  background-color: var(--color-bg-secondary);
+}
+.bg-code-bg-tertiary {
+  background-color: var(--color-bg-tertiary);
+}
+
+.text-code-text-primary {
+  color: var(--color-text-primary);
+}
+.text-code-text-secondary {
+  color: var(--color-text-secondary);
+}
+.text-code-accent {
+  color: var(--color-accent);
+}
+
+.border-code-border {
+  border-color: var(--color-border);
+}
+
+/* 2. OLD BACKWARDS COMPATIBILITY (For Phase 2 code) */
+.bg-lc-body {
+  background-color: var(--color-bg-primary);
+}
+.bg-lc-layer1 {
+  background-color: var(--color-bg-secondary);
+}
+.bg-lc-layer2 {
+  background-color: var(--color-bg-tertiary);
+}
+.bg-lc-layer3 {
+  background-color: var(--color-bg-tertiary);
+}
+
+.text-lc-text {
+  color: var(--color-text-primary);
+}
+.text-lc-secondary {
+  color: var(--color-text-secondary);
+}
+.text-lc-yellow {
+  color: var(--color-accent);
+}
+.text-lc-easy {
+  color: var(--color-success);
+}
+.text-lc-medium {
+  color: var(--color-warning);
+}
+.text-lc-hard {
+  color: var(--color-error);
+}
+
+.border-lc-border {
+  border-color: var(--color-border);
+}
+
+/* ... Keep scrollbar and other styles below ... */
+
+/* Custom Scrollbar (LeetCode Style) */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-bg-tertiary);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+/* Difficulty Badges (LeetCode Style) */
+.difficulty-easy {
+  color: var(--color-success);
+  font-weight: 500;
+}
+
+.difficulty-medium {
+  color: var(--color-warning);
+  font-weight: 500;
+}
+
+.difficulty-hard {
+  color: var(--color-error);
+  font-weight: 500;
+}
+
+/* Split Pane Gutter (Clean LeetCode Look) */
+.gutter {
+  cursor: col-resize;
+  transition: background-color 0.3s;
+  background-color: transparent;
+  position: relative;
+}
+
+.gutter::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 2px;
+  background-color: var(--color-border);
+  transform: translateX(-50%);
+}
+
+.gutter:hover::after {
+  background-color: var(--color-accent);
 }
