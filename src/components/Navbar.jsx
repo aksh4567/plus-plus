@@ -23,7 +23,7 @@ export default function Navbar() {
   }, []);
 
   return (
-    <nav className="bg-code-bg-primary px-8 py-3 border-b border-code-border flex items-center justify-between sticky top-0 z-50 transition-colors duration-200">
+    <nav className="bg-code-bg-primary px-20 py-3 border-b border-code-border flex items-center justify-between sticky top-0 z-50 transition-colors duration-200">
       {/* Left Side: Logo */}
       <div className="flex items-center gap-8">
         <Link
@@ -66,7 +66,7 @@ export default function Navbar() {
         {/* Admin Button - Only visible for admins */}
         {isAdmin && (
           <Link href="/admin">
-            <button className="bg-linear-to-br from-[#ffa116] to-[#ffb84d] text-[#1a1a1a] px-3 py-1.5 rounded-md text-sm font-semibold shadow-[0_2px_8px_rgba(255,161,22,0.3)] hover:shadow-[0_4px_12px_rgba(255,161,22,0.5)] hover:-translate-y-px active:translate-y-0 transition-all duration-200 cursor-pointer border-none">
+            <button className="bg-amber-400/30 text-amber-500 px-3 py-1 rounded-md font-semibold font-sans text-sm shadow-[0_2px_8px_rgba(255,161,22,0.3)] hover:shadow-[0_4px_12px_rgba(255,161,22,0.5)] hover:-translate-y-px active:translate-y-0 transition-all duration-200 cursor-pointer border-none">
               Admin
             </button>
           </Link>
@@ -76,7 +76,7 @@ export default function Navbar() {
         <div className="flex items-center">
           <SignedOut>
             <SignInButton mode="modal">
-              <button className="bg-code-bg-tertiary hover:bg-code-bg-secondary text-code-text-primary px-4 py-1.5 rounded-md text-sm font-medium transition-all">
+              <button className="bg-code-bg-tertiary hover:bg-code-bg-secondary text-code-text-primary px-4 py-1 rounded-md text-sm font-medium transition-all">
                 Sign In
               </button>
             </SignInButton>
