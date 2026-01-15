@@ -9,6 +9,7 @@ const isPublicRoute = createRouteMatcher([
     '/api/webhooks/clerk(.*)',
     '/problems',
     '/api/problems',
+    '/api/auth/check-admin',
     // '/api/problems(.*)', //
     // '/api/admin/problems(.*)', //
     // '/api/admin/problems/(.*)',//
