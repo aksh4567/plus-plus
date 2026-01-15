@@ -2,6 +2,7 @@
 
 import Editor from "@monaco-editor/react";
 import { defineMonacoTheme } from "../../lib/monaco-themes";
+import { CloudUpload, CodeXml, Play } from "lucide-react";
 export default function CodeEditor({
   language,
   setLanguage,
@@ -24,39 +25,48 @@ export default function CodeEditor({
   };
 
   return (
-    <div className="flex flex-col overflow-hidden h-full">
+    <div className="flex flex-col overflow-hidden h-full rounded-xl border-2 border-lc-border">
       {/* Toolbar */}
-      <div className="bg-code-bg-secondary px-5 py-3 border-b border-code-border flex items-center gap-4 shrink-0">
+      <div className="flex items-center w-full px-1 overflow-x-auto  h-9 bg-code-bg-tertiary scrollbar-hide">
+        <div className="text-code-text-primary text-sm flex gap-1.5 items-center px-3 py-1.5 font-bold ">
+          <CodeXml className="w-3.5 h-3.5 text-green-500" />
+          Code
+        </div>
+
+        <div className="flex items-center gap-2 flex-1 justify-center-safe">
+          <button
+            onClick={onRun}
+            disabled={isRunning}
+            className="flex items-center gap-2 px-4 py-1 bg-code-bg-primary border border-code-border rounded-md text-code-text-primary hover:bg-code-accent hover:border-code-accent transition-all disabled:opacity-50 disabled:cursor-not-allowed text-sm font-semibold"
+          >
+            <Play className="w-4 h-4 fill-current" />
+            <span>Run</span>
+          </button>
+
+          <button
+            onClick={onSubmit}
+            disabled={isRunning}
+            className="bg-green-600 flex items-center gap-2 px-4 py-1 text-white rounded-md hover:opacity-90 transition-all disabled:opacity-50 disabled:cursor-not-allowed text-sm font-semibold"
+          >
+            <CloudUpload className="w-4 h-4" />
+            <span>Submit</span>
+          </button>
+        </div>
+      </div>
+      <div className="bg-code-bg-primary px-5 py-3 flex items-center gap-4 shrink-0 h-9 border-b border-lc-border">
         <select
           value={language}
           onChange={(e) => setLanguage(e.target.value)}
-          className="px-3 py-2 bg-code-bg-tertiary border border-code-border rounded-lg text-code-text-primary cursor-pointer text-sm"
+          className=" bg-code-bg-primary rounded-lg text-code-text-primary cursor-pointer text-sm focus:outline-none focus:ring-0"
         >
           <option value="javascript">JavaScript</option>
           <option value="java">Java</option>
           <option value="cpp">C++</option>
         </select>
-
-        <button
-          onClick={onRun}
-          disabled={isRunning}
-          className="px-5 py-2 bg-code-bg-tertiary border border-code-border rounded-lg text-code-text-primary hover:bg-code-accent hover:border-code-accent transition-all disabled:opacity-50 disabled:cursor-not-allowed text-sm font-semibold"
-        >
-          ▶ Run
-        </button>
-
-        <button
-          onClick={onSubmit}
-          disabled={isRunning}
-          style={{ backgroundColor: "var(--color-success)" }}
-          className="px-5 py-2 text-white rounded-lg hover:opacity-90 transition-all disabled:opacity-50 disabled:cursor-not-allowed text-sm font-semibold"
-        >
-          Submit
-        </button>
       </div>
 
       {/* Monaco Editor */}
-      <div className="flex-1 bg-lc-body overflow-hidden border border-lc-border rounded-lg shadow-sm">
+      <div className="flex-1 bg-lc-body overflow-hidden shadow-sm">
         <Editor
           height="100%"
           language={monacoLanguageMap[language] || "javascript"}

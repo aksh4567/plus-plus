@@ -1,4 +1,5 @@
 "use client";
+import { SquareCheck, Terminal } from "lucide-react";
 import { useState } from "react";
 
 export default function OutputConsole({
@@ -13,9 +14,9 @@ export default function OutputConsole({
   const [activeTestCaseId, setActiveTestCaseId] = useState(0);
 
   return (
-    <div className="flex flex-col h-full overflow-hidden border-t border-code-border bg-code-bg-secondary">
+    <div className="flex flex-col h-full overflow-hidden border-2 border-code-border bg-code-bg-secondary rounded-xl">
       {/* 1. Header Tabs */}
-      <div className="flex items-center px-4 py-2 space-x-6 border-b border-code-border bg-code-bg-tertiary/50 h-10 shrink-0">
+      <div className="flex items-center px-4 py-2 space-x-6 border-b border-code-border bg-code-bg-tertiary/50 h-9 shrink-0">
         <button
           onClick={() => setActiveTab("testcases")}
           className={`flex items-center gap-2 text-sm font-medium transition-colors ${
@@ -29,14 +30,7 @@ export default function OutputConsole({
               activeTab === "testcases" ? "bg-code-text-secondary/20" : ""
             }`}
           >
-            <svg
-              viewBox="0 0 24 24"
-              width="1em"
-              height="1em"
-              className="w-3 h-3 text-code-text-secondary fill-current"
-            >
-              <path d="M21 7L9 19l-5.5-5.5 1.41-1.41L9 16.17 19.59 5.59 21 7z" />
-            </svg>
+            <SquareCheck className="w-4 h-4" />
           </div>
           Testcase
         </button>
@@ -49,7 +43,7 @@ export default function OutputConsole({
               : "text-code-text-secondary hover:text-code-text-primary"
           }`}
         >
-          <span className="text-lg leading-none">›_</span>
+          <Terminal className="w-4 h-4" />
           Test Result
         </button>
       </div>

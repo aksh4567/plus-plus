@@ -46,10 +46,9 @@ export default function ProblemDescription({ problem, horizontalSplit }) {
   return (
     <div
       style={{ width: `${horizontalSplit}%`, minWidth: "250px" }}
-      className="flex flex-col h-full overflow-hidden border-r bg-code-bg-secondary border-code-border shrink-0"
+      className="flex flex-col h-full overflow-hidden border-2 bg-code-bg-secondary border-code-border shrink-0 rounded-xl"
     >
       {/* 1. Tab Header (LeetCode Style) */}
-      {/* 1. Tab Header (LeetCode Style with Lucide) */}
       <div className="flex items-center w-full px-1 overflow-x-auto border-b h-9 border-code-border bg-code-bg-tertiary scrollbar-hide">
         <div className="flex p-1 gap-1">
           {/* Tab: Description */}
@@ -100,7 +99,7 @@ export default function ProblemDescription({ problem, horizontalSplit }) {
                 : "text-code-text-secondary hover:bg-code-bg-primary/50 hover:text-code-text-primary"
             }`}
           >
-            <History className="w-3.5 h-3.5 text-code-text-secondary" />
+            <History className="w-3.5 h-3.5 text-blue-500" />
             Submissions
           </button>
         </div>

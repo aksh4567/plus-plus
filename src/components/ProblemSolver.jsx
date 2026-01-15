@@ -167,7 +167,7 @@ export default function ProblemSolver({ problem }) {
           maxWidth: "80%",
           minWidth: "20%",
         }}
-        className="h-full shrink-0"
+        className="h-full shrink-0 pt-2 pl-2"
       >
         <ProblemDescription problem={problem} />
       </div>
@@ -198,7 +198,7 @@ export default function ProblemSolver({ problem }) {
         {/* TOP: Code Editor */}
         <div
           style={{ height: `${verticalSplit}%`, minHeight: "20%" }}
-          className="w-full shrink-0"
+          className="w-full shrink-0 pr-2 pt-2"
         >
           <CodeEditor
             language={language}
@@ -233,7 +233,7 @@ export default function ProblemSolver({ problem }) {
         {/* BOTTOM: Output Console */}
         <div
           style={{ height: `${100 - verticalSplit}%`, minHeight: "20%" }}
-          className="w-full shrink-0 bg-code-bg-primary"
+          className="w-full shrink-0 bg-code-bg-primary pr-2"
         >
           <OutputConsole
             activeTab={activeTab}
